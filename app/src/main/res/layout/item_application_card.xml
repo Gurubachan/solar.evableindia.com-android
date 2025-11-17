@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="4dp"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tv_serial_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_application_name_label" 
+            app:layout_constraintBottom_toBottomOf="@+id/tv_application_name_label"
+            tools:text="1." />
+
+        <TextView
+            android:id="@+id/tv_application_name_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name:"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/tv_serial_number" 
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_application_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            tools:text="Applicant Name"
+            android:textAppearance="?attr/textAppearanceBody1"
+            app:layout_constraintStart_toEndOf="@id/tv_application_name_label"
+            app:layout_constraintTop_toTopOf="@id/tv_application_name_label"
+            app:layout_constraintEnd_toStartOf="@+id/btn_delete_application" /> 
+
+        <TextView
+            android:id="@+id/tv_application_id_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="App ID:"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent" 
+            app:layout_constraintTop_toBottomOf="@id/tv_application_name_label" />
+
+        <TextView
+            android:id="@+id/tv_application_id_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            tools:text="APP123456789"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:layout_constraintStart_toEndOf="@id/tv_application_id_label"
+            app:layout_constraintTop_toTopOf="@id/tv_application_id_label"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_application_contact_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact:"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent" 
+            app:layout_constraintTop_toBottomOf="@id/tv_application_id_card" />
+
+        <TextView
+            android:id="@+id/tv_application_contact"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            tools:text="9876543210"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:layout_constraintStart_toEndOf="@id/tv_application_contact_label"
+            app:layout_constraintTop_toTopOf="@id/tv_application_contact_label"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_application_dob_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DOB:"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent" 
+            app:layout_constraintTop_toBottomOf="@id/tv_application_contact" />
+
+        <TextView
+            android:id="@+id/tv_application_dob"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="1990-01-01"
+            android:layout_marginStart="8dp"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:layout_constraintStart_toEndOf="@id/tv_application_dob_label"
+            app:layout_constraintTop_toTopOf="@id/tv_application_dob_label"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_application_status_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status:"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent" 
+            app:layout_constraintTop_toBottomOf="@id/tv_application_dob" />
+
+        <TextView
+            android:id="@+id/tv_application_status_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Submitted"
+            android:layout_marginStart="8dp"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textStyle="italic"
+            app:layout_constraintStart_toEndOf="@id/tv_application_status_label"
+            app:layout_constraintTop_toTopOf="@id/tv_application_status_label"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_applied_by_user_name_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Applied By:"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent" 
+            app:layout_constraintTop_toBottomOf="@id/tv_application_status_card" />
+
+        <TextView
+            android:id="@+id/tv_applied_by_user_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Creator User Name"
+            android:layout_marginStart="8dp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:layout_constraintStart_toEndOf="@id/tv_applied_by_user_name_label"
+            app:layout_constraintTop_toTopOf="@id/tv_applied_by_user_name_label"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <LinearLayout
+            android:id="@+id/ll_management_buttons"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_applied_by_user_name_label">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_manage_kyc_item"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:text="KYC"
+                android:textSize="11sp" 
+                app:icon="@drawable/ic_baseline_fingerprint_24"
+                app:iconTint="?attr/colorSecondary"
+                app:iconPadding="4dp"
+                app:iconSize="18dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_manage_bank_item"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:text="Bank"
+                android:textSize="11sp" 
+                app:icon="@drawable/ic_baseline_account_balance_24"
+                app:iconTint="?attr/colorSecondary"
+                app:iconPadding="4dp"
+                app:iconSize="18dp"
+                android:layout_marginStart="4dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_manage_discom_item"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:text="Discom"
+                android:textSize="11sp" 
+                app:icon="@drawable/ic_baseline_electrical_services_24"
+                app:iconTint="?attr/colorSecondary"
+                app:iconPadding="4dp"
+                app:iconSize="18dp"
+                android:layout_marginStart="4dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_manage_installation_item"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:text="Install"
+                android:textSize="11sp" 
+                app:icon="@drawable/ic_baseline_build_24"
+                app:iconTint="?attr/colorSecondary"
+                app:iconPadding="4dp"
+                app:iconSize="18dp"
+                android:layout_marginStart="4dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_management_buttons1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_management_buttons">
+<com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_upload_quotation"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:text="Quotation"
+                android:textSize="11sp"
+                app:icon="@drawable/ic_baseline_upload_file_24"
+                app:iconTint="?attr/colorSecondary"
+                app:iconPadding="4dp"
+                app:iconSize="18dp"
+                android:layout_marginStart="4dp"/>
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/btn_delete_application"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_delete" 
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Delete Application"
+            android:visibility="gone" 
+            tools:visibility="visible"
+            app:tint="?attr/colorError" 
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_application_name_label"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_edit_application"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Details"
+            android:layout_marginTop="8dp" 
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_management_buttons1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "430259836621",
+    "project_id": "com-solar-ev",
+    "storage_bucket": "com-solar-ev.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430259836621:android:4a539f621d7db74f457b84",
+        "android_client_info": {
+          "package_name": "com.solar.ev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCf_7TcXO-6QEdU6oEpYG57L1ObECA4gP4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

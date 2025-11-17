@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Solar Ev</string>
+    <string name="title_activity_main">Dashboard</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_signup">Signup</string>
+    <string name="logout">Logout</string>
+    <string name="profile">Profile</string>
+    <string name="application">New Application</string>
+    <string name="edit_application">Existing applications.</string>
+    <string name="growth">Growth</string>
+    <string name="reports">Reports</string>
+    <string name="settings">Settings</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="contact">Phone No.</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="create_account">Create Account</string>
+    <string name="user_name">User Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="error_invalid_email_format">Invalid email format</string>
+    <string name="error_phone_length">Phone number must be %1$d digits</string> <!-- %1$d will be replaced by the number -->
+    <string name="error_password_length">Password must be at least %1$d characters</string>
+    <string name="error_passwords_do_not_match">Passwords do not match</string>
+    <string name="signup_successful_login_prompt">Signup Successful! Please login.</string>
+    <string name="signup_failed_missing_data">Signup successful, but token or email missing in response.</string>
+    <string name="signup_failed_try_again">Signup failed, please try again.</string>
+    <string name="api_error_generic">API Error</string>
+    <string name="network_error_generic">Network error</string>
+    <string name="dialog_loading_title">Signing Up</string>
+    <string name="dialog_loading_message">Please wait...</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="processing_dialog_message">Processing…</string>
+    <string name="user_management">User Management</string>
+</resources>

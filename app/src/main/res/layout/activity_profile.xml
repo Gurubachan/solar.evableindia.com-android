@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ProfileActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_profile"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.DayNight"
+            app:title="Profile" />
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <ProgressBar
+                android:id="@+id/progressBar_profile"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                tools:visibility="visible"/>
+
+            <ImageView
+                android:id="@+id/imageView_profile_photo"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="Profile Photo"
+                tools:srcCompat="@drawable/ic_default_profile" /> <!-- Using tools:srcCompat for placeholder in preview -->
+            <Button
+                android:id="@+id/button_change_profile_photo"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:text="Upload Photo" />
+            <TextView
+                android:id="@+id/textView_profile_name_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name:"
+                style="@style/TextAppearance.MaterialComponents.Caption" />
+            <TextView
+                android:id="@+id/textView_profile_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                tools:text="Evable Agent" />
+
+            <TextView
+                android:id="@+id/textView_profile_email_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email:"
+                style="@style/TextAppearance.MaterialComponents.Caption" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:id="@+id/textView_profile_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@+id/button_verify_email"
+                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    tools:text="evableindia@gmail.com" />
+
+                <Button
+                    android:id="@+id/button_verify_email"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="Verify"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:visibility="gone"
+                    tools:visibility="visible"/>
+
+                <ImageView
+                    android:id="@+id/imageView_email_verified_tick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@android:drawable/checkbox_on_background"
+                    android:contentDescription="Email Verified"
+                    android:visibility="gone"
+                    tools:visibility="visible"/>
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/textView_profile_phone_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Phone:"
+                style="@style/TextAppearance.MaterialComponents.Caption" />
+            <TextView
+                android:id="@+id/textView_profile_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                tools:text="9876543210" />
+
+            <TextView
+                android:id="@+id/textView_profile_role_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Role:"
+                style="@style/TextAppearance.MaterialComponents.Caption" />
+            <TextView
+                android:id="@+id/textView_profile_role"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                tools:text="Client" />
+
+            <TextView
+                android:id="@+id/textView_profile_bio_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bio:"
+                style="@style/TextAppearance.MaterialComponents.Caption" />
+            <TextView
+                android:id="@+id/textView_profile_bio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                tools:text="Field agent for data collection" />
+
+            <TextView
+                android:id="@+id/textView_profile_address_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Address:"
+                style="@style/TextAppearance.MaterialComponents.Caption" />
+            <TextView
+                android:id="@+id/textView_profile_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                tools:text="123 Main St, Baripda, Mayurbhanj, Odisha, 757107, India" />
+
+            <!-- Add more fields as needed from the User model:
+                - gender
+                - date_of_birth
+                - email_verified_at
+                - created_at
+                - updated_at
+                - login_allowed
+                - is_active
+                - profile_completed
+             -->
+            <Button
+                android:id="@+id/button_edit_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Edit Profile" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
