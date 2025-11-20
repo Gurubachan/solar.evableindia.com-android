@@ -1,12 +1,14 @@
 package com.solar.ev
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.solar.ev.adapter.QuotationAdapter
 import com.solar.ev.databinding.ActivityQuotationBinding
 import com.solar.ev.model.quotation.QuotationListItem
@@ -28,6 +30,7 @@ class QuotationActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_APPLICATION_ID = "EXTRA_APPLICATION_ID"
+        const val BASE_IMAGE_URL = "https://solar.evableindia.com/core/public/storage/"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,13 +46,15 @@ class QuotationActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Quotations"
 
+        binding.rvQuotations.layoutManager = LinearLayoutManager(this)
+
         if (applicationId == null) {
             Toast.makeText(this, "Application ID is missing!", Toast.LENGTH_LONG).show()
             finish()
             return
         }
 
-        if (userRole == "admin" || userRole == "back-office") {
+        if (userRole == "admin" || userRole == "back-office" || userRole == "supervisor") {
             binding.fabAddQuotation.visibility = View.VISIBLE
             binding.fabAddQuotation.setOnClickListener {
                 val intent = Intent(this, CreateQuotationActivity::class.java)
@@ -83,8 +88,15 @@ class QuotationActivity : AppCompatActivity() {
                 }
                 is SuryaGharApiResult.Success -> {
                     binding.progressBar.visibility = View.GONE
-                    if (result.data.success && result.data.data != null) {
-                        setupQuotations(result.data.data)
+                    if (result.data.status && result.data.data != null) {
+                        if (result.data.data.isEmpty()) {
+                            binding.tvNoQuotations.visibility = View.VISIBLE
+                            binding.rvQuotations.visibility = View.GONE
+                        } else {
+                            binding.tvNoQuotations.visibility = View.GONE
+                            binding.rvQuotations.visibility = View.VISIBLE
+                            setupQuotations(result.data.data)
+                        }
                     } else {
                         Toast.makeText(this, result.data.message, Toast.LENGTH_LONG).show()
                     }
@@ -100,7 +112,7 @@ class QuotationActivity : AppCompatActivity() {
             when (result) {
                 is SuryaGharApiResult.Loading -> { /* Handle loading */ }
                 is SuryaGharApiResult.Success -> {
-                    if (result.data.success) {
+                    if (result.data.status) {
                         Toast.makeText(this, result.data.message, Toast.LENGTH_LONG).show()
                         loadQuotations()
                     } else {
@@ -131,6 +143,12 @@ class QuotationActivity : AppCompatActivity() {
                         }
                         .setNegativeButton("Cancel", null)
                         .show()
+                }
+                "view" -> {
+                    val url = BASE_IMAGE_URL + quotation.quotationFile
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    intent.data = Uri.parse(url)
+                    startActivity(intent)
                 }
             }
         }

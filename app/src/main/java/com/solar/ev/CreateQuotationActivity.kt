@@ -142,7 +142,7 @@ class CreateQuotationActivity : AppCompatActivity() {
             when (result) {
                 is SuryaGharApiResult.Loading -> { /* Handle loading */ }
                 is SuryaGharApiResult.Success -> {
-                    if (result.data.success) {
+                    if (result.data.status) {
                         Toast.makeText(this, result.data.message, Toast.LENGTH_LONG).show()
                         finish()
                     } else {

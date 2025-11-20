@@ -38,5 +38,7 @@
     <string name="processing_dialog_message">Processing…</string>
     <string name="user_management">User Management</string>
 
+        <string name="delete_quotation">Delete Quotation</string>
+
 
 </resources>
