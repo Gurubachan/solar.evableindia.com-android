@@ -61,13 +61,76 @@ class QuotationAdapter(
                 onAction(quotation, "view")
             }
 
-            if (userRole == "admin" || userRole == "supervisor") {
-                binding.btnDeleteQuotation.visibility = View.VISIBLE
-                binding.btnDeleteQuotation.setOnClickListener {
-                    onAction(quotation, "delete")
+            // --- Visibility Logic for Action Buttons ---
+            val status = quotation.status
+            var shouldShowMoreActions = false
+
+            // Hide all actions by default to reset the view for recycled items
+            binding.llMoreActions.visibility = View.GONE
+            binding.btnUpdateQuotation.visibility = View.GONE
+            binding.btnSubmitQuotation.visibility = View.GONE
+            binding.btnApproveQuotation.visibility = View.GONE
+            binding.btnRejectQuotation.visibility = View.GONE
+            binding.btnRevisionQuotation.visibility = View.GONE
+            binding.btnDeleteQuotation.visibility = View.GONE
+
+            // Role-based visibility logic
+            when (userRole) {
+                "admin" -> {
+                    binding.btnDeleteQuotation.visibility = View.VISIBLE
+                    binding.btnDeleteQuotation.setOnClickListener { onAction(quotation, "delete") }
+
+                    when (status) {
+                        "pending", "revision" -> {
+                            binding.btnUpdateQuotation.visibility = View.VISIBLE
+                            binding.btnUpdateQuotation.setOnClickListener { onAction(quotation, "update") }
+                            binding.btnSubmitQuotation.visibility = View.VISIBLE
+                            binding.btnSubmitQuotation.setOnClickListener { onAction(quotation, "submit") }
+                            shouldShowMoreActions = true
+                        }
+                        "submitted" -> {
+                            binding.btnApproveQuotation.visibility = View.VISIBLE
+                            binding.btnApproveQuotation.setOnClickListener { onAction(quotation, "approve") }
+                            binding.btnRejectQuotation.visibility = View.VISIBLE
+                            binding.btnRejectQuotation.setOnClickListener { onAction(quotation, "reject") }
+                            binding.btnRevisionQuotation.visibility = View.VISIBLE
+                            binding.btnRevisionQuotation.setOnClickListener { onAction(quotation, "revision") }
+                            shouldShowMoreActions = true
+                        }
+                    }
                 }
-            } else {
-                binding.btnDeleteQuotation.visibility = View.GONE
+                "supervisor" -> {
+                    binding.btnDeleteQuotation.visibility = View.VISIBLE
+                    binding.btnDeleteQuotation.setOnClickListener { onAction(quotation, "delete") }
+
+                    if (status == "pending" || status == "revision") {
+                        binding.btnSubmitQuotation.visibility = View.VISIBLE
+                        binding.btnSubmitQuotation.setOnClickListener { onAction(quotation, "submit") }
+                        shouldShowMoreActions = true
+                    }
+                    if (status == "submitted") {
+                        binding.btnApproveQuotation.visibility = View.VISIBLE
+                        binding.btnApproveQuotation.setOnClickListener { onAction(quotation, "approve") }
+                        binding.btnRejectQuotation.visibility = View.VISIBLE
+                        binding.btnRejectQuotation.setOnClickListener { onAction(quotation, "reject") }
+                        binding.btnRevisionQuotation.visibility = View.VISIBLE
+                        binding.btnRevisionQuotation.setOnClickListener { onAction(quotation, "revision") }
+                        shouldShowMoreActions = true
+                    }
+                }
+                "back-office" -> {
+                    if (status == "pending" || status == "revision") {
+                        binding.btnUpdateQuotation.visibility = View.VISIBLE
+                        binding.btnUpdateQuotation.setOnClickListener { onAction(quotation, "update") }
+                        binding.btnSubmitQuotation.visibility = View.VISIBLE
+                        binding.btnSubmitQuotation.setOnClickListener { onAction(quotation, "submit") }
+                        shouldShowMoreActions = true
+                    }
+                }
+            }
+
+            if (shouldShowMoreActions) {
+                binding.llMoreActions.visibility = View.VISIBLE
             }
         }
     }

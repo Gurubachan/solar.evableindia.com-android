@@ -36,6 +36,8 @@ import com.solar.ev.model.kyc.KYCFetchResponse
 import com.solar.ev.model.kyc.KYCUpdateResponse
 import com.solar.ev.model.quotation.CreateQuotationRequest
 import com.solar.ev.model.quotation.QuotationListResponse
+import com.solar.ev.model.quotation.QuotationRemarkRequest
+import com.solar.ev.model.quotation.UpdateQuotationRequest
 import com.solar.ev.model.report.AgentReportResponse // Added import
 import com.solar.ev.model.suryaghar.ProjectProcessCreateData // New
 import com.solar.ev.model.suryaghar.ProjectProcessCreateRequest // New
@@ -274,7 +276,7 @@ interface ApiService {
 
     @GET("v1/dashboard/stats")
     suspend fun getDashboardStats(
-        @Header("Authorization") token:String
+        @Header("Authorization") token: String
     ): Response<DashboardStatsResponse>
 
     // Report Endpoints
@@ -332,6 +334,41 @@ interface ApiService {
     suspend fun createQuotation(
         @Header("Authorization") token: String,
         @Body request: CreateQuotationRequest
+    ): Response<QuotationListResponse>
+
+    @PUT("v1/quotations/{id}")
+    suspend fun updateQuotation(
+        @Header("Authorization") token: String,
+        @Path("id") quotationId: String,
+        @Body request: UpdateQuotationRequest
+    ): Response<QuotationListResponse>
+
+    @PATCH("v1/quotations/{id}/submit")
+    suspend fun submitQuotation(
+        @Header("Authorization") token: String,
+        @Path("id") quotationId: String,
+        @Body request: QuotationRemarkRequest
+    ): Response<QuotationListResponse>
+
+    @PATCH("v1/quotations/{id}/approve")
+    suspend fun approveQuotation(
+        @Header("Authorization") token: String,
+        @Path("id") quotationId: String,
+        @Body request: QuotationRemarkRequest
+    ): Response<QuotationListResponse>
+
+    @PATCH("v1/quotations/{id}/reject")
+    suspend fun rejectQuotation(
+        @Header("Authorization") token: String,
+        @Path("id") quotationId: String,
+        @Body request: QuotationRemarkRequest
+    ): Response<QuotationListResponse>
+
+    @PATCH("v1/quotations/{id}/request-revision")
+    suspend fun requestRevisionQuotation(
+        @Header("Authorization") token: String,
+        @Path("id") quotationId: String,
+        @Body request: QuotationRemarkRequest
     ): Response<QuotationListResponse>
 
     @DELETE("v1/quotations/{id}")

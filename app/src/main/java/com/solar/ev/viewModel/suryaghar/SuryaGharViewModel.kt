@@ -7,6 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.solar.ev.model.application.ApplicationDetailResponse
 import com.solar.ev.model.quotation.CreateQuotationRequest
 import com.solar.ev.model.quotation.QuotationListResponse
+import com.solar.ev.model.quotation.QuotationRemarkRequest
+import com.solar.ev.model.quotation.UpdateQuotationRequest
 import com.solar.ev.model.suryaghar.*
 import com.solar.ev.network.ApiService
 import com.solar.ev.util.NetworkUtils // Changed import from com.solar.ev.network.NetworkUtils
@@ -250,6 +252,126 @@ class SuryaGharViewModel(private val apiService: ApiService) : ViewModel() {
                 }
             } catch (e: Exception) {
                 _deleteQuotationResult.value = SuryaGharApiResult.Error(e.message ?: "An unknown error occurred")
+            }
+        }
+    }
+    
+    // Update Quotation
+    private val _updateQuotationResult = MutableLiveData<SuryaGharApiResult<QuotationListResponse>>()
+    val updateQuotationResult: LiveData<SuryaGharApiResult<QuotationListResponse>> = _updateQuotationResult
+
+    fun updateQuotation(token: String, quotationId: String, request: UpdateQuotationRequest) {
+        _updateQuotationResult.value = SuryaGharApiResult.Loading
+        viewModelScope.launch {
+            try {
+                val response = apiService.updateQuotation("Bearer $token", quotationId, request)
+                if (response.isSuccessful && response.body() != null) {
+                    _updateQuotationResult.value = SuryaGharApiResult.Success(response.body()!!)
+                } else {
+                    val errorResponse = NetworkUtils.parseError(response)
+                    _updateQuotationResult.value = SuryaGharApiResult.Error(
+                        errorResponse.message ?: "An unknown error occurred",
+                        errorResponse.data as? Map<String, List<String>>?
+                    )
+                }
+            } catch (e: Exception) {
+                _updateQuotationResult.value = SuryaGharApiResult.Error(e.message ?: "An unknown error occurred")
+            }
+        }
+    }
+
+    // Submit Quotation
+    private val _submitQuotationResult = MutableLiveData<SuryaGharApiResult<QuotationListResponse>>()
+    val submitQuotationResult: LiveData<SuryaGharApiResult<QuotationListResponse>> = _submitQuotationResult
+
+    fun submitQuotation(token: String, quotationId: String, request: QuotationRemarkRequest) {
+        _submitQuotationResult.value = SuryaGharApiResult.Loading
+        viewModelScope.launch {
+            try {
+                val response = apiService.submitQuotation("Bearer $token", quotationId, request)
+                if (response.isSuccessful && response.body() != null) {
+                    _submitQuotationResult.value = SuryaGharApiResult.Success(response.body()!!)
+                } else {
+                    val errorResponse = NetworkUtils.parseError(response)
+                    _submitQuotationResult.value = SuryaGharApiResult.Error(
+                        errorResponse.message ?: "An unknown error occurred",
+                        errorResponse.data as? Map<String, List<String>>?
+                    )
+                }
+            } catch (e: Exception) {
+                _submitQuotationResult.value = SuryaGharApiResult.Error(e.message ?: "An unknown error occurred")
+            }
+        }
+    }
+
+    // Approve Quotation
+    private val _approveQuotationResult = MutableLiveData<SuryaGharApiResult<QuotationListResponse>>()
+    val approveQuotationResult: LiveData<SuryaGharApiResult<QuotationListResponse>> = _approveQuotationResult
+
+    fun approveQuotation(token: String, quotationId: String, request: QuotationRemarkRequest) {
+        _approveQuotationResult.value = SuryaGharApiResult.Loading
+        viewModelScope.launch {
+            try {
+                val response = apiService.approveQuotation("Bearer $token", quotationId, request)
+                if (response.isSuccessful && response.body() != null) {
+                    _approveQuotationResult.value = SuryaGharApiResult.Success(response.body()!!)
+                } else {
+                    val errorResponse = NetworkUtils.parseError(response)
+                    _approveQuotationResult.value = SuryaGharApiResult.Error(
+                        errorResponse.message ?: "An unknown error occurred",
+                        errorResponse.data as? Map<String, List<String>>?
+                    )
+                }
+            } catch (e: Exception) {
+                _approveQuotationResult.value = SuryaGharApiResult.Error(e.message ?: "An unknown error occurred")
+            }
+        }
+    }
+
+    // Reject Quotation
+    private val _rejectQuotationResult = MutableLiveData<SuryaGharApiResult<QuotationListResponse>>()
+    val rejectQuotationResult: LiveData<SuryaGharApiResult<QuotationListResponse>> = _rejectQuotationResult
+
+    fun rejectQuotation(token: String, quotationId: String, request: QuotationRemarkRequest) {
+        _rejectQuotationResult.value = SuryaGharApiResult.Loading
+        viewModelScope.launch {
+            try {
+                val response = apiService.rejectQuotation("Bearer $token", quotationId, request)
+                if (response.isSuccessful && response.body() != null) {
+                    _rejectQuotationResult.value = SuryaGharApiResult.Success(response.body()!!)
+                } else {
+                    val errorResponse = NetworkUtils.parseError(response)
+                    _rejectQuotationResult.value = SuryaGharApiResult.Error(
+                        errorResponse.message ?: "An unknown error occurred",
+                        errorResponse.data as? Map<String, List<String>>?
+                    )
+                }
+            } catch (e: Exception) {
+                _rejectQuotationResult.value = SuryaGharApiResult.Error(e.message ?: "An unknown error occurred")
+            }
+        }
+    }
+
+    // Request Revision Quotation
+    private val _requestRevisionQuotationResult = MutableLiveData<SuryaGharApiResult<QuotationListResponse>>()
+    val requestRevisionQuotationResult: LiveData<SuryaGharApiResult<QuotationListResponse>> = _requestRevisionQuotationResult
+
+    fun requestRevisionQuotation(token: String, quotationId: String, request: QuotationRemarkRequest) {
+        _requestRevisionQuotationResult.value = SuryaGharApiResult.Loading
+        viewModelScope.launch {
+            try {
+                val response = apiService.requestRevisionQuotation("Bearer $token", quotationId, request)
+                if (response.isSuccessful && response.body() != null) {
+                    _requestRevisionQuotationResult.value = SuryaGharApiResult.Success(response.body()!!)
+                } else {
+                    val errorResponse = NetworkUtils.parseError(response)
+                    _requestRevisionQuotationResult.value = SuryaGharApiResult.Error(
+                        errorResponse.message ?: "An unknown error occurred",
+                        errorResponse.data as? Map<String, List<String>>?
+                    )
+                }
+            } catch (e: Exception) {
+                _requestRevisionQuotationResult.value = SuryaGharApiResult.Error(e.message ?: "An unknown error occurred")
             }
         }
     }

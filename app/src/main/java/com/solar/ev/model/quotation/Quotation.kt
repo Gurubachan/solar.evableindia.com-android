@@ -47,3 +47,17 @@ data class User(
 class ProjectProcess {
     // Based on the response, this is null, so we have no information about its structure.
 }
+
+data class UpdateQuotationRequest(
+    @SerializedName("project_process_id") val projectProcessId: String? = null,
+    @SerializedName("quotation_reference_id") val quotationReferenceId: String? = null,
+    @SerializedName("funding_type") val fundingType: String? = null,
+    @SerializedName("quotation_amount") val quotationAmount: String? = null,
+    @SerializedName("quotation_file") val quotationFile: String? = null,
+    @SerializedName("quotation_details") val quotationDetails: String? = null,
+    @SerializedName("remarks") val remarks: String? = null
+)
+
+data class QuotationRemarkRequest(
+    @SerializedName("remarks") val remarks: String
+)

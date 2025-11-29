@@ -20,7 +20,7 @@ import com.solar.ev.viewModel.suryaghar.SuryaGharViewModel
 import com.solar.ev.viewModel.suryaghar.SuryaGharViewModelFactory
 import java.io.IOException
 
-class CreateQuotationActivity : AppCompatActivity() {
+class CreateQuotationActivity :  BaseActivity() {
 
     private lateinit var binding: ActivityCreateQuotationBinding
     private val viewModel: SuryaGharViewModel by viewModels {
