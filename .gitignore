@@ -14,6 +14,7 @@
 .cxx
 local.properties
 /.idea/
+/app/build/*
 /app/build/generated/data_binding_base_class_source_out/debug/out/com/solar/ev/databinding/ActivityAgentReportBinding.java
 /app/build/generated/data_binding_base_class_source_out/debug/out/com/solar/ev/databinding/ActivityApplicationBinding.java
 /app/build/generated/data_binding_base_class_source_out/debug/out/com/solar/ev/databinding/ActivityBankDetailsBinding.java
@@ -3007,3 +3008,4 @@ local.properties
 /app/build/tmp/kapt3/incApCache/debugUnitTest/classpath-structure.bin
 /app/build/tmp/kapt3/incApCache/debugUnitTest/java-cache.bin
 /app/build/generated/res/processDebugGoogleServices/values/values.xml
+.kotlin/errors/errors-1763716096309.log
